@@ -10,7 +10,7 @@ class ListsController < ApplicationController
     	flash[:success] = "List has been created successfully"
     	redirect_to lists_path
     else
-      flash[:danger] = "List has not been created"
+      flash.now[:danger] = "List has not been created"
       render :new
     end
   end
