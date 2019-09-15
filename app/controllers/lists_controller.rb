@@ -31,6 +31,13 @@ class ListsController < ApplicationController
       render :edit
     end
   end
+  def destroy
+    @list = List.find(params[:id])
+    if @list.destroy
+      flash[:success] = "List has been deleted"
+      redirect_to lists_path
+    end
+  end
   
   protected
     def resource_not_found
