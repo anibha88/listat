@@ -6,4 +6,8 @@
 	<div class="glyphicon glyphicon-calendar" id="list-date"> 
 		<%= @list.created_at.strftime("%b %d, %Y") %>
 	</div>
+
+	<div class="edit-delete">
+		<%= link_to "Edit List", edit_list_path(@list), class: "btn btn-primary btn-lg btn-space" %>
+	</div>
 </list>	
