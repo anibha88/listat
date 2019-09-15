@@ -1,10 +1,14 @@
 class ListsController < ApplicationController
+  before_action :set_list, only: [:show, :edit, :update, :destroy]
+
   def index
     @lists = List.all
   end
+
   def new
   	@list = List.new
   end
+
   def create
   	@list = List.new(list_params)
   	if @list.save
@@ -15,14 +19,16 @@ class ListsController < ApplicationController
       render :new
     end
   end
+
   def show
-    @list = List.find(params[:id])
+    
   end
+
   def edit
-    @list = List.find(params[:id])
+    
   end
+
   def update
-    @list = List.find(params[:id])
     if @list.update(list_params)
       flash[:success] = "List has been updated"
       redirect_to @list
@@ -31,8 +37,8 @@ class ListsController < ApplicationController
       render :edit
     end
   end
+
   def destroy
-    @list = List.find(params[:id])
     if @list.destroy
       flash[:success] = "List has been deleted"
       redirect_to lists_path
@@ -50,5 +56,9 @@ class ListsController < ApplicationController
   	def list_params
   		params.require(:list).permit(:name) 
 	  end
+
+    def set_list
+      @list = List.find(params[:id])
+    end
 
 end
