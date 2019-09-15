@@ -19,6 +19,13 @@ class ListsController < ApplicationController
     @list = List.find(params[:id])
   end
   
+  protected
+    def resource_not_found
+      message = "The list you are looking for could not be found"
+      flash[:alert] = message
+      redirect_to root_path
+    end
+    
   private
   	def list_params
   		params.require(:list).permit(:name) 
