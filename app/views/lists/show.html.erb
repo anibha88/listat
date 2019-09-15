@@ -1,0 +1,9 @@
+<list class="list-detail">
+	<h1 class="list-detail-title">
+		<%= @list.name %>
+	</h1>
+	
+	<div class="glyphicon glyphicon-calendar" id="list-date"> 
+		<%= @list.created_at.strftime("%b %d, %Y") %>
+	</div>
+</list>	
