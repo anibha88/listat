@@ -18,6 +18,19 @@ class ListsController < ApplicationController
   def show
     @list = List.find(params[:id])
   end
+  def edit
+    @list = List.find(params[:id])
+  end
+  def update
+    @list = List.find(params[:id])
+    if @list.update(list_params)
+      flash[:success] = "List has been updated"
+      redirect_to @list
+    else
+      flash.now[:danger] = "List has not been updated"
+      render :edit
+    end
+  end
   
   protected
     def resource_not_found
