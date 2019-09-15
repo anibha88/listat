@@ -48,47 +48,31 @@ body {
   color: #64103F;
 }
 
-// Listing articles styling
+// Listing lists styling
 
-.article-title {
+.list-title {
   font-weight: bold;
   font-size: 2.5em;
   margin-bottom: 0.8em;
   padding-left: 0.7em;
 }
 
-.article-body {
-  font-size: 1.5em;
-  padding-left: 1.2em;
-  color: #64103F;
-
-}
-
-.author {
-  color: #64103F;
-  padding-left: 25px;
-}
-
-// .article-title {
-//
-// }
-
-.article-detail {
+.list-detail {
   margin-top: 20px;
   color: #0000ff;
 }
 
-.article-detail {
+.list-detail {
   margin-top: 20px;
   color: #0000ff;
 }
 
-.article-detail-title {
+.list-detail-title {
   font-size: 3em;
   margin-bottom: 40px;
 }
 
-.article-show-body {
+.list-show-body {
   font-size: 1.5em;
   padding-left: 0em;
   margin-top: 15px;

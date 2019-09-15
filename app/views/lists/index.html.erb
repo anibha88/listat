@@ -1,2 +1,13 @@
-<%= link_to "New List", new_list_path %>
+<%= link_to "New List", new_list_path, class: "btn btn-defaul btn-lg", id: "new-list-btn" %>
+
+
+<% @lists.each do |list| %> 
+	<div class="well well-lg">
+		<div class="list-title"> 
+			<%= link_to list.name, list_path(list) %>
+		</div>
+	</div> 
+<% end %>
+
+
 
