@@ -12,7 +12,7 @@ class ListsController < ApplicationController
   def create
   	@list = List.new(list_params)
   	if @list.save
-    	flash[:success] = "List has been created successfully"
+    	flash[:notice] = "List has been created successfully"
     	redirect_to lists_path
     else
       flash.now[:danger] = "List has not been created"
@@ -31,7 +31,7 @@ class ListsController < ApplicationController
 
   def update
     if @list.update(list_params)
-      flash[:success] = "List has been updated"
+      flash[:notice] = "List has been updated"
       redirect_to @list
     else
       flash.now[:danger] = "List has not been updated"
@@ -41,7 +41,7 @@ class ListsController < ApplicationController
 
   def destroy
     if @list.destroy
-      flash[:success] = "List has been deleted"
+      flash[:notice] = "List has been deleted"
       redirect_to lists_path
     end
   end

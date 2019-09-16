@@ -11,6 +11,20 @@ class ListItemsController < ApplicationController
 		redirect_to list_path(@list)
 	end
 
+	def edit
+		@list_item = ListItem.find(params[:id])
+	end
+
+	def update
+		@list_item = ListItem.find(params[:id])
+		if @list_item.update_attributes(list_item_params)
+			flash[:notice] = "ListItem has been updated"
+		else
+			flash.now[:alert] = "ListItem has not been updated"
+		end
+		redirect_to list_path(@list)
+	end
+
 	def destroy
 		@list = List.find(params[:list_id])
 	    @list_item = @list.list_items.find(params[:id])
