@@ -9,7 +9,13 @@ class ListItemsController < ApplicationController
 			flash.now[:alert] = "ListItem has not been created"
 		end
 		redirect_to list_path(@list)
-		
+	end
+
+	def destroy
+		@list = List.find(params[:list_id])
+	    @list_item = @list.list_items.find(params[:id])
+	    @list_item.destroy
+	    redirect_to list_path(@list)
 	end
 
 	private
