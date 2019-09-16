@@ -1,0 +1,26 @@
+<div class="col-md-12">
+	<header>
+		<h2>List Items</h2>
+	</header>
+	<div class="col-md-10">
+		<% if @list.list_items.any? %>
+			<% persisted_list_items(@list_items).each do |list_item| %>
+				<div class="listitem-body">
+					<%= list_item.body %>
+				</div>
+
+				<div class="listitem-time">
+					Created at <%= time_ago_in_words(list_item.created_at) %>
+					ago 
+				</div>
+				<hr>
+				<div class="edit-delete">
+					<%#= link_to "Edit List Item", update_list_item_path(@list,list_item), class: "btn btn-primary btn-lg btn-space" %>
+					<%= link_to "Delete List Item", list_list_item_path(@list,list_item), method: :delete, data: { confirm: "Are you sure you want to delete this list?" }, class: "btn btn-primary btn-lg btn-space" %>
+				</div>
+			<% end %>
+		<% else %>
+			There are no list items to show.
+		<% end %>
+	</div>
+</div>

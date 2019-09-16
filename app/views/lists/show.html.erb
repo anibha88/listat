@@ -13,60 +13,40 @@
 	</div>
 </list>	
 <hr>
-<div class="col-md-12">
-	<%= form_for [@list, @list_item], :html => {class: "form-horizontal", role: "form"} do |f| %>
-		<% if @list_item.errors.any? %>
+<%= render 'list_items/form' %>
+<!-- <div class="col-md-12">
+	<%#= form_for [@list, @list_item], :html => {class: "form-horizontal", role: "form"} do |f| %>
+		<%# if @list_item.errors.any? %>
 			<div class="panel panel-danger col-md-offset-1">
 				<div class="panel-heading">
 					<h2 class="panel-title">
-						<%= pluralize(@list_item.errors.count, "error") %>
+						<%#= pluralize(@list_item.errors.count, "error") %>
 						prohibited this list_item from being saved:
 					</h2>
 					<div class="panel-body">
 						<ul>
-							<%= @list_item.errors.full_messages.each do |msg| %>
-								<li> <%= msg%> </li>
-							<% end %>
+							<%#= @list_item.errors.full_messages.each do |msg| %>
+								<li> <%#= msg%> </li>
+							<%# end %>
 						</ul>
 					</div>
 				</div>
 			</div>
-		<% end %>
+		<%# end %>
 		<div class="form-group">
 			<div class="control-label col-md-2">
-				<%= f.label :body, 'New ListItem' %>
+				<%#= f.label :body, 'New ListItem' %>
 			</div>
 			<div class="col-md-10">
-				<%= f.text_area :body, rows: 10, class: 'form-control', placeholder: 'Your ListItem' %>
+				<%#= f.text_area :body, rows: 10, class: 'form-control', placeholder: 'Your ListItem' %>
 			</div>
 		</div>
 
 		<div class="form-group">
 			<div class="col-md-offset-2 col-md-10">
-				<%= f.submit "Add ListItem", class: 'btn btn-primary btn-lg pull-right' %>
+				<%#= f.submit "Add ListItem", class: 'btn btn-primary btn-lg pull-right' %>
 			</div>
 		</div>
-	<% end %>
-</div>
-<div class="col-md-12">
-	<header>
-		<h2>List Items</h2>
-	</header>
-	<div class="col-md-10">
-		<% if @list.list_items.any? %>
-			<% persisted_list_items(@list_items).each do |list_item| %>
-				<div class="listitem-body">
-					<%= list_item.body %>
-				</div>
-
-				<div class="listitem-time">
-					Created at <%= time_ago_in_words(list_item.created_at) %>
-					ago 
-				</div>
-				<hr>
-			<% end %>
-		<% else %>
-			There are no list items to show.
-		<% end %>
-	</div>
-</div>
+	<%# end %>
+</div> -->
+<%= render 'list_items/list_item' %>
