@@ -21,7 +21,8 @@ class ListsController < ApplicationController
   end
 
   def show
-    
+    @list_item = @list.list_items.build
+    @list_items = @list.list_items
   end
 
   def edit
