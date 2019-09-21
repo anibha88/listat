@@ -27,10 +27,32 @@ class ListItemsController < ApplicationController
 
 	def destroy
 		@list = List.find(params[:list_id])
-	    @list_item = @list.list_items.find(params[:id])
-	    @list_item.destroy
-	    redirect_to list_path(@list)
+	    @list_item = @list.list_items.find(params[:id])	    
+
+	if params["soft_delete"] == "true"
+
+      @list_item.move_to_trash
+
+      # @list.list_items.all.each do |list_item|
+      #   list_item.delete
+      # end
+      # @list.delete
+      action = "moved to trash"
+    else
+      @list_item.destroy
+      action = "deleted"
+    end
+    
+    flash[:notice] = "ListItem has been #{action}"
+    redirect_to lists_path(@list)
 	end
+
+	def archive
+	    @list_item = @list.list_items.find(params[:id])
+	    @article.update_attribute(:displayed, false)
+
+	    redirect_to article_path
+  	end
 
 	private
 

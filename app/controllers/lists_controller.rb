@@ -2,7 +2,7 @@ class ListsController < ApplicationController
   before_action :set_list, only: [:show, :edit, :update, :destroy]
 
   def index
-    @lists = List.all
+    @lists = List.exclude_soft_deleted
   end
 
   def new
@@ -40,10 +40,23 @@ class ListsController < ApplicationController
   end
 
   def destroy
-    if @list.destroy
-      flash[:notice] = "List has been deleted"
-      redirect_to lists_path
+    if params["soft_delete"] == "true"
+
+      @list.move_to_trash
+
+      # @list.list_items.all.each do |list_item|
+      #   list_item.delete
+      # end
+      # @list.delete
+      action = "moved to trash"
+    else
+      @list.destroy
+      action = "deleted"
     end
+    
+    flash[:notice] = "List has been #{action}"
+    redirect_to lists_path
+    
   end
   
   protected

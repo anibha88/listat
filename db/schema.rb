@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_16_015755) do
+ActiveRecord::Schema.define(version: 2019_09_17_175419) do
 
   create_table "list_items", force: :cascade do |t|
     t.text "body"
     t.integer "list_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "soft_delete", default: false
     t.index ["list_id"], name: "index_list_items_on_list_id"
   end
 
@@ -24,6 +25,7 @@ ActiveRecord::Schema.define(version: 2019_09_16_015755) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "soft_delete", default: false
   end
 
 end

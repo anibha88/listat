@@ -9,44 +9,10 @@
 
 	<div class="edit-delete">
 		<%= link_to "Edit List", edit_list_path(@list), class: "btn btn-primary btn-lg btn-space" %>
-		<%= link_to "Delete List", list_path(@list), method: :delete, data: { confirm: "Are you sure you want to delete this list?" }, class: "btn btn-primary btn-lg btn-space" %>
+		<%= link_to "Delete List", list_path(@list), method: :delete, data: { confirm: "Are you sure you want to delete this list? You will not be able to recover it back!" }, class: "btn btn-danger btn-lg btn-space" %>
+		<%= link_to "Move to Trash", list_path(@list,soft_delete: true), method: :delete, data: { confirm: "Are you sure you want to destroy this list? You can find this in Trash!" }, class: "btn btn-info btn-lg btn-space" %>
 	</div>
 </list>	
 <hr>
 <%= render 'list_items/form' %>
-<!-- <div class="col-md-12">
-	<%#= form_for [@list, @list_item], :html => {class: "form-horizontal", role: "form"} do |f| %>
-		<%# if @list_item.errors.any? %>
-			<div class="panel panel-danger col-md-offset-1">
-				<div class="panel-heading">
-					<h2 class="panel-title">
-						<%#= pluralize(@list_item.errors.count, "error") %>
-						prohibited this list_item from being saved:
-					</h2>
-					<div class="panel-body">
-						<ul>
-							<%#= @list_item.errors.full_messages.each do |msg| %>
-								<li> <%#= msg%> </li>
-							<%# end %>
-						</ul>
-					</div>
-				</div>
-			</div>
-		<%# end %>
-		<div class="form-group">
-			<div class="control-label col-md-2">
-				<%#= f.label :body, 'New ListItem' %>
-			</div>
-			<div class="col-md-10">
-				<%#= f.text_area :body, rows: 10, class: 'form-control', placeholder: 'Your ListItem' %>
-			</div>
-		</div>
-
-		<div class="form-group">
-			<div class="col-md-offset-2 col-md-10">
-				<%#= f.submit "Add ListItem", class: 'btn btn-primary btn-lg pull-right' %>
-			</div>
-		</div>
-	<%# end %>
-</div> -->
 <%= render 'list_items/list_item' %>
