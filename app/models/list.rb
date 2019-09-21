@@ -14,4 +14,15 @@ class List < ApplicationRecord
 			list_items.each{|c| c.restore}	  			
 	  	end	
 	end
+
+	def remove(params)
+	  if params["soft_delete"] == "true"
+        self.move_to_trash
+        action = "moved to trash"
+      else
+        self.destroy
+        action = "deleted"
+      end
+      action
+	end
 end

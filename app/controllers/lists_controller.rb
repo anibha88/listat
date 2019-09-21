@@ -40,23 +40,9 @@ class ListsController < ApplicationController
   end
 
   def destroy
-    if params["soft_delete"] == "true"
-
-      @list.move_to_trash
-
-      # @list.list_items.all.each do |list_item|
-      #   list_item.delete
-      # end
-      # @list.delete
-      action = "moved to trash"
-    else
-      @list.destroy
-      action = "deleted"
-    end
-    
+    action = @list.remove(params)
     flash[:notice] = "List has been #{action}"
-    redirect_to lists_path
-    
+    redirect_to lists_path    
   end
   
   protected
