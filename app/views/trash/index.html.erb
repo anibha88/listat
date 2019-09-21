@@ -1,0 +1,37 @@
+<div class="starter-template">
+	<% if @trash_lists.empty? %>
+		<h1 id="no-lists"> No Lists in Trash </h1>
+	<% else %>
+		<h1 align="center"> The Below lists are in Trash</h1>
+		<br >
+		<% @trash_lists.each do |list| %> 
+			<div class="well well-lg">
+				<div class="list-title"> 
+					<h3 class="list-detail-title">
+						<%= list.name %>
+					</h3>
+					<%= link_to 'Restore List', trash_restore_path(id: list.id, type: 'list',soft_delete: false), class: "btn btn-info btn-lg btn-space" %>
+				</div>
+			</div> 
+		<% end %>
+	<% end %>
+</div>
+<br>
+<div class="starter-template">
+	<% if @trash_list_items.empty? %>
+		<h1 id="no-lists"> No List Items in Trash </h1>
+	<% else %>
+		<h1 align="center"> The Below list items are in Trash</h1>
+		<br >
+		<% @trash_list_items.each do |list_item| %> 
+			<div class="well well-lg">
+				<div class="list-title"> 
+					<h3 class="list-detail-title">
+						<%= list_item.body %>
+					</h3>
+					<%= link_to 'Restore List Item', trash_restore_path(id: list_item.id, type: 'list_item',soft_delete: false), class: "btn btn-info btn-lg btn-space" %>
+				</div>
+			</div> 
+		<% end %>
+	<% end %>
+</div>
